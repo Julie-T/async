@@ -10,3 +10,5 @@ export default class GameSavingLoader {
     return value;
   }
 }
+
+GameSavingLoader.load().then((s) => console.log(s));
