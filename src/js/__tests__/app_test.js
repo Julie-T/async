@@ -56,3 +56,16 @@ test('Преобразование данных', () => {
       },
   });
 });
+
+test('Преобразование данных', () => {
+  class GameSavingLoaderTest {
+    static load() {
+      const value = read().then((data) => {
+        json(data);
+        throw new Error();
+      }).then((data) => JSON.parse(data)).catch((err) => err);
+      return value;
+    }
+  }
+  expect(GameSavingLoaderTest.load()).rejects.toTHrowError(new Error());
+});
